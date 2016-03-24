@@ -1,5 +1,3 @@
-import TypeOfRoom;
-
 public class Hotel {
 
 	private String location;
@@ -20,31 +18,9 @@ public class Hotel {
 	private Boolean airportShuttle;
 	private Boolean disabledFriendly;
 
-	public Hotel(String location, Long roomsCount, Long roomsAvailable,
-	 						 Double[] priceRange, Double stars, TypeOfRoom[] roomTypes,
-							 Boolean parking, Boolean bar, Boolean resturant,
-							 Boolean breakfast, Boolean gym, Boolean roomService,
-							 Boolean laundryService, Boolean touristInfo, Boolean bikeRent,
-							 Boolean airportShuttle, Boolean disabledFriendly) {
-		
+	public Hotel(String location, TypeOfRoom[] roomTypes) {
 		this.location = location;
-		this.roomsCount = roomsCount;
-		this.roomsAvailable = roomsAvailable;
-		this.priceRange = priceRange;
-		this.stars = stars;
 		this.roomTypes = roomTypes;
-		this.parking = parking;
-		this.bar = bar;
-		this.resturant = resturant;
-		this.breakfast = breakfast;
-		this.gym = gym;
-		this.roomService = roomService;
-		this.laundryService = laundryService;
-		this.touristInfo = touristInfo;
-		this.bikeRent = bikeRent;
-		this.airportShuttle = airportShuttle;
-		this.disabledFriendly = disabledFriendly;
-		
 	}
 
 	public String getLocation() {

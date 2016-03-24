@@ -1,5 +1,3 @@
-import Room;
-
 public class TypeOfRoom {
 
 	private int singleBed;
@@ -13,7 +11,7 @@ public class TypeOfRoom {
 		this.singleBed = singleBed;
 		this.doubleBed = doubleBed;
 		this.people = people;
-		this typeOfRoomID = typeOfRoomID;
+		this.typeOfRoomID = typeOfRoomID;
 	
 	}
 
