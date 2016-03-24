@@ -1,3 +1,5 @@
+import Room;
+
 public class TypeOfRoom {
 
 	private int singleBed;

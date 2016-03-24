@@ -36,7 +36,7 @@ public class Hotel {
 		this.parking = parking;
 		this.bar = bar;
 		this.resturant = resturant;
-		this.breakfast = brekfast;
+		this.breakfast = breakfast;
 		this.gym = gym;
 		this.roomService = roomService;
 		this.laundryService = laundryService;
