@@ -10,6 +10,12 @@ public class Interface {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		DirectorMockTest test = new DirectorMockTest();
+		
+		test.setUp();
+		test.test();
+		test.clearUp();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

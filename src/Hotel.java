@@ -18,9 +18,8 @@ public class Hotel {
 	private Boolean airportShuttle;
 	private Boolean disabledFriendly;
 
-	public Hotel(String location, TypeOfRoom[] roomTypes) {
+	public Hotel(String location) {
 		this.location = location;
-		this.roomTypes = roomTypes;
 	}
 
 	public String getLocation() {

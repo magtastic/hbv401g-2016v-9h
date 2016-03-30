@@ -1,8 +1,6 @@
-import java.util.Date;
-
 public class DataBaseMock implements DataBaseManager {
 
-	public Hotel getInitHotels(Date date,String location,int people) {
+	public Hotel getInitHotels(String location) {
 		
 		TypeOfRoom[] types = new TypeOfRoom[3];
 		
@@ -11,7 +9,7 @@ public class DataBaseMock implements DataBaseManager {
 		types[2] = new TypeOfRoom(2,2,6,3);
 		
 		
-		Hotel hotel1 = new Hotel(location, types);
+		Hotel hotel1 = new Hotel(location);
 		
 		return hotel1;
 	}
