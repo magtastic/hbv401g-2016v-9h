@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.util.ArrayList;
 
 public class Room {
 
@@ -6,15 +6,15 @@ public class Room {
 	private Boolean disabledFriendly;
 	private Boolean smoking;
 	private Double price;
-	private Date[] date2dArray;
+	private ArrayList<Date[]> date;
 
 	public Room( Boolean breakfast, Boolean disabledFriendly, Boolean smoking,
-							 Double price, Date[] date2dArray) {
+							 Double price, ArrayList<Date[]> date) {
 		this.breakfast = breakfast;
 		this.disabledFriendly = disabledFriendly;
 		this.smoking = smoking;
 		this.price = price;
-		this.date2dArray = date2dArray;
+		this.date = date;
 	}
 
 	public boolean isBreakfast() {
@@ -49,12 +49,14 @@ public class Room {
 		this.price = price;
 	}
 
-	public Date[] getDate2dArray() {
-		return date2dArray;
+	public ArrayList<Date[]> getDate() {
+		return date;
 	}
+	
 
-	public void setDate2dArray(Date[] date2dArray) {
-		this.date2dArray = date2dArray;
+	public void setDate(ArrayList<Date[]> date) {
+		this.date = date;
 	}
+	
 
 }

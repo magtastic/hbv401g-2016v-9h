@@ -1,5 +1,12 @@
-import java.util.Date;
 
 public interface Director {
-	public Hotel[] handelRequest(Date date,String location, int numGuest);
+
+	void handleRequest(Date dateIn, Date dateOut, String location, int numGuest);
+
+	TypeOfRoom[] filterTypeOfRooms(int numGuests, TypeOfRoom[] t);
+
+	boolean roomAvailable(Date dateIn, Date dateOut, TypeOfRoom t);
+
+	boolean isBefore(Date d1, Date d2);
+
 }

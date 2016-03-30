@@ -1,6 +1,6 @@
 
 public interface DataBaseManager {
 
-	public Hotel getInitHotels( String lockation);
+	public Hotel[] getInitHotels( String lockation);
 	
 }
