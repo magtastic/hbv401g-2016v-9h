@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Director {
 
-	private DatabaseManager db = new DatabaseManager();
+	private DataBaseManager db = new DataBaseManager();
 	private Interface UI = new Interface();
 
 	
