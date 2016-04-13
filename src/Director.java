@@ -1,44 +1,50 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Director {
 
 	private DatabaseManager db = new DatabaseManager();
 	private Interface UI = new Interface();
+	
+	public void bookRoom() {
+		
+	}
 
 	
-	public void handleRequest(Date dateIn, Date dateOut, String location, int numGuest){
+	public ArrayList<Hotel> handleRequest(Date dateIn, Date dateOut, String location, int numGuest){
 
-		Hotel[] hotels = db.getInitHotels(location);
+		ArrayList<Hotel> hotels = db.getInitHotels(location);
 
-		for(int i = 0; i<hotels.length ; i++) {
-			TypeOfRoom[] t = filterTypeOfRooms(numGuest , hotels[i].getRoomTypes());
+		for(int i = 0; i<hotels.size() ; i++) {
+			ArrayList<TypeOfRoom> t = filterTypeOfRooms(numGuest , hotels.get(i).getRoomTypes());
 			
 
-			for(int j = 0; j<t.length ; j++) {
+			for(int j = 0; j<t.size() ; j++) {
 	
-				if(t[j] != null) {
+				if(t.get(j) != null) {
 	
-					if( !roomAvailable(dateIn , dateOut , t[j]) ) {
-						t[j]=null;
+					if( !roomAvailable(dateIn , dateOut , t.get(j)) ) {
+						t.set(j, null);
 					}
 				}
 			}
-			hotels[i].setRoomTypes(t);
+			hotels.get(i).setRoomTypes(t);
 		}
 
-		UI.showResults(hotels);
+		return hotels;
 
 	}
 
 	
-	public TypeOfRoom[] filterTypeOfRooms(int numGuests , TypeOfRoom[] t) {
+	public ArrayList<TypeOfRoom> filterTypeOfRooms(int numGuests , ArrayList<TypeOfRoom> t) {
 
-		TypeOfRoom[] tFilter = new TypeOfRoom[t.length];
-		System.arraycopy(t, 0, tFilter, 0, t.length);
+		ArrayList<TypeOfRoom> tFilter = new ArrayList();
+		Collections.copy(tFilter, t);
+		//System.arraycopy(t, 0, tFilter, 0, t.size());
 
-		for(int i=0; i<tFilter.length; i++) {
-			if(tFilter[i].getPeople() != numGuests) {
-				tFilter[i] = null;
+		for(int i=0; i<tFilter.size(); i++) {
+			if(tFilter.get(i).getPeople() != numGuests) {
+				tFilter.set(i, null);
 			}
 		}
 		return tFilter;
@@ -47,10 +53,10 @@ public class Director {
 	
 	public boolean roomAvailable(Date dateIn , Date dateOut , TypeOfRoom t) {
 
-		Room[] rooms = t.getRooms();
+		ArrayList<Room> rooms = t.getRooms();
 
-		for(int i = 0; i<rooms.length; i++){
-			ArrayList<Date[]> tmpDate = rooms[i].getDate();
+		for(int i = 0; i<rooms.size(); i++){
+			ArrayList<Date[]> tmpDate = rooms.get(i).getDate();
 			int numFoundDates = 0;
 
 			for(int k = 0; k < tmpDate.size(); k++) {
