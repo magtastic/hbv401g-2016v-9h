@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class Hotel {
 
 	private String location;
@@ -5,7 +6,7 @@ public class Hotel {
 	private Long roomsAvailable;
 	private Double[] priceRange;
 	private Double stars;
-	private TypeOfRoom[] roomTypes;
+	private ArrayList<TypeOfRoom> roomTypes;
 	private Boolean parking;
 	private Boolean bar;
 	private Boolean resturant;
@@ -62,11 +63,11 @@ public class Hotel {
 		this.stars = stars;
 	}
 
-	public TypeOfRoom[] getRoomTypes() {
+	public ArrayList<TypeOfRoom> getRoomTypes() {
 		return roomTypes;
 	}
 
-	public void setRoomTypes(TypeOfRoom[] roomTypes) {
+	public void setRoomTypes(ArrayList<TypeOfRoom> roomTypes) {
 		this.roomTypes = roomTypes;
 	}
 

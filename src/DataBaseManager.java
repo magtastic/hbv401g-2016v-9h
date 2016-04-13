@@ -1,18 +1,18 @@
+
+import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+public class DatabaseManager {
+	public ArrayList<Hotel> getInitHotels(String location) {
 
-public class DataBaseManager {
-	
-	public Hotel[] getInitHotels(String location) {
-		
 		
 			
-			Hotel[] hotels = new Hotel[1];
+			ArrayList<Hotel> hotels = new ArrayList();
 			
-			hotels[0] = new Hotel(location);
+			//hotels[0] = new Hotel(location);
 			
 			//hotels[0] = createDummyHotel(hotels[0]);
 			

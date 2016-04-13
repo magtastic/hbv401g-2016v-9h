@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 public class TypeOfRoom {
 
 	private int singleBed;
 	private int doubleBed;
 	private int people;
 	private int typeOfRoomID;
-	private Room[] rooms;
+	private ArrayList<Room> rooms;
 	
 	public TypeOfRoom(int singleBed, int doubleBed, int people, int typeOfRoomID) {
 	
@@ -47,11 +48,11 @@ public class TypeOfRoom {
 		this.typeOfRoomID = typeOfRoomID;
 	}
 
-	public Room[] getRooms() {
+	public ArrayList<Room> getRooms() {
 		return rooms;
 	}
 
-	public void setRooms(Room[] rooms) {
+	public void setRooms(ArrayList<Room> rooms) {
 		this.rooms = rooms;
 	}
 	
