@@ -7,6 +7,7 @@ public class Room {
 	private Boolean smoking;
 	private Double price;
 	private ArrayList<Date[]> date;
+	private int roomID;
 
 	public Room( Boolean breakfast, Boolean disabledFriendly, Boolean smoking,
 							 Double price, ArrayList<Date[]> date) {
@@ -56,6 +57,10 @@ public class Room {
 
 	public void setDate(ArrayList<Date[]> date) {
 		this.date = date;
+	}
+	
+	public int getRoomID() {
+		return roomID;
 	}
 	
 
