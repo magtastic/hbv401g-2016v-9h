@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DirectorMockTest {
-	private Director dir;
+	private DirectorInterface dir;
 	private Date dateA1;
 	private Date dateA2;
 	private Date dateB1;

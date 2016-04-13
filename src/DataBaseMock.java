@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class DataBaseMock implements DataBaseManager {
+public class DataBaseMock implements DataBaseManagerInterface {
 
 	public Hotel[] getInitHotels(String location) {
 		

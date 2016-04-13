@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class DirectorMock implements Director {
+public class DirectorMock implements DirectorInterface {
 	private DataBaseMock dbMock = new DataBaseMock();
 	private InterfaceMock intMock = new InterfaceMock();
 
