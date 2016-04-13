@@ -18,6 +18,7 @@ public class Hotel {
 	private Boolean bikeRent;
 	private Boolean airportShuttle;
 	private Boolean disabledFriendly;
+	private int hotelID;
 
 	public Hotel(String location) {
 		this.location = location;
@@ -157,6 +158,10 @@ public class Hotel {
 
 	public void setDisabledFriendly(Boolean disabledFriendly) {
 		this.disabledFriendly = disabledFriendly;
+	}
+	
+	public int getHotelID(){
+		return hotelID;
 	}
 
 }

@@ -6,7 +6,17 @@ public class Director {
 	private DatabaseManager db = new DatabaseManager();
 	private Interface UI = new Interface();
 	
-	public void bookRoom() {
+	public void bookRoom(Hotel h , TypeOfRoom t, Date dateIn, Date dateOut) {
+				
+		ArrayList<Room> rooms = new ArrayList();
+		rooms = t.getRooms();
+		
+		for(int i = 0 ; i<rooms.size() ; i++) {
+			if(checkRoom(rooms.get(i),dateIn,dateOut)==true) {
+				//BOKA
+				db.updateRoom(h.getHotelID(),t.getTypeOfRoomID(),rooms.get(i).getRoomID(),dateIn,dateOut);
+			} else System.out.print("VILLA");
+		}
 		
 	}
 
@@ -56,31 +66,34 @@ public class Director {
 		ArrayList<Room> rooms = t.getRooms();
 
 		for(int i = 0; i<rooms.size(); i++){
-			ArrayList<Date[]> tmpDate = rooms.get(i).getDate();
-			int numFoundDates = 0;
-
-			for(int k = 0; k < tmpDate.size(); k++) {
-				
-				if( (isBefore(dateIn, tmpDate.get(k)[0]) &&
-						 isBefore(dateOut, tmpDate.get(k)[0]))
-						||
-						(isBefore(tmpDate.get(k)[1], dateIn) &&
-						 isBefore(tmpDate.get(k)[1], dateOut)) ){
-					numFoundDates++;
-				}
-				else{
-					break;
-				}
-			}
-			if(numFoundDates == tmpDate.size()){
-				return true;
-			}
-
+			if(checkRoom(rooms.get(i),dateIn,dateOut)==true) return true;
 		}
 
 		return false;
 	}
 
+	public boolean checkRoom(Room room, Date dateIn, Date dateOut) {
+		
+		ArrayList<Date[]> tmpDate = room.getDate();
+		int numFoundDates = 0;
+
+		for(int k = 0; k < tmpDate.size(); k++) {
+			
+			if( (isBefore(dateIn, tmpDate.get(k)[0]) &&
+					 isBefore(dateOut, tmpDate.get(k)[0]))
+					||
+					(isBefore(tmpDate.get(k)[1], dateIn) &&
+					 isBefore(tmpDate.get(k)[1], dateOut)) ){
+				numFoundDates++;
+			}
+			else{
+				break;
+			}
+		}
+		if(numFoundDates == tmpDate.size()){
+			return true;
+		} else return false;
+	}
 	
 	public boolean isBefore (Date d1, Date d2) {
 
