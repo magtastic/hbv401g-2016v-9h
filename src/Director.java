@@ -5,6 +5,7 @@ public class Director {
 
 	private DatabaseManager db = new DatabaseManager();
 	private Interface UI = new Interface();
+	private int currentBookingNum = 744;
 	
 	public void bookRoom(Hotel h , TypeOfRoom t, Date dateIn, Date dateOut) {
 				
@@ -12,9 +13,11 @@ public class Director {
 		rooms = t.getRooms();
 		
 		for(int i = 0 ; i<rooms.size() ; i++) {
-			if(checkRoom(rooms.get(i),dateIn,dateOut)==true) {
+			if(checkRoom(rooms.get(i),dateIn,dateOut)) {
 				//BOKA
-				db.updateRoom(h.getHotelID(),t.getTypeOfRoomID(),rooms.get(i).getRoomID(),dateIn,dateOut);
+				db.updateRoom(h.getHotelID(),t.getTypeOfRoomID(),rooms.get(i).getRoomID(),dateIn,dateOut,currentBookingNum);
+				currentBookingNum++;
+				return;
 			} else System.out.print("VILLA");
 		}
 		
