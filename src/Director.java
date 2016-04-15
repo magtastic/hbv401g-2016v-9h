@@ -9,8 +9,8 @@ public class Director {
 	
 	public void bookRoom(Hotel h , TypeOfRoom t, Date dateIn, Date dateOut) {
 				
-		ArrayList<Room> rooms = new ArrayList();
-		rooms = t.getRooms();
+		ArrayList<Room> rooms = t.getRooms();
+		//rooms = t.getRooms();
 		
 		for(int i = 0 ; i<rooms.size() ; i++) {
 			if(checkRoom(rooms.get(i),dateIn,dateOut)) {
@@ -22,15 +22,28 @@ public class Director {
 		}
 		
 	}
+	
+	public ArrayList<Hotel> cleanUpHotels(ArrayList<Hotel> h){
+		
+		for(int i = 0; i<h.size(); i++){
+			ArrayList<TypeOfRoom> t = h.get(i).getRoomTypes();
+			for(int j = t.size()-1; j >= 0; j--){
+				if(t.get(j) == null){
+					t.remove(j);
+				}
+			}
+		}
+		
+		return h;
+	}
 
 	
 	public ArrayList<Hotel> handleRequest(Date dateIn, Date dateOut, String location, int numGuest){
-
+		
 		ArrayList<Hotel> hotels = db.getInitHotels(location);
 
 		for(int i = 0; i<hotels.size() ; i++) {
 			ArrayList<TypeOfRoom> t = filterTypeOfRooms(numGuest , hotels.get(i).getRoomTypes());
-			
 
 			for(int j = 0; j<t.size() ; j++) {
 	
@@ -43,18 +56,20 @@ public class Director {
 			}
 			hotels.get(i).setRoomTypes(t);
 		}
-
+		
+		hotels = cleanUpHotels(hotels);
 		return hotels;
 
 	}
 
 	
 	public ArrayList<TypeOfRoom> filterTypeOfRooms(int numGuests , ArrayList<TypeOfRoom> t) {
-
-		ArrayList<TypeOfRoom> tFilter = new ArrayList();
-		Collections.copy(tFilter, t);
+		
+		ArrayList<TypeOfRoom> tFilter = new ArrayList<TypeOfRoom>(t);
+		//Collections.copy(tFilter, t);
+		System.out.println(tFilter);
 		//System.arraycopy(t, 0, tFilter, 0, t.size());
-
+		
 		for(int i=0; i<tFilter.size(); i++) {
 			if(tFilter.get(i).getPeople() != numGuests) {
 				tFilter.set(i, null);
