@@ -6,10 +6,14 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
+import javax.swing.JTextPane;
 
 public class Interface {
 
 	private JFrame frame;
+	private JTextPane txtpnResults = new JTextPane();
+	private final JTextPane txtpnStars = new JTextPane();
 	/**
 	 * Launch the application.
 	 */
@@ -27,16 +31,22 @@ public class Interface {
 		});
 	}
 	
-	public void Test(){
+	public ArrayList<Hotel> Test(){
 		Date dateIn = new Date(29,3,16);
 		Date dateOut = new Date(1,5,16);
 		ArrayList<Hotel> hotels = new Director().handleRequest(dateIn,dateOut,"Reykjavik",200);
-		for( int i = 0 ; i<hotels.size() ; i++) {
-			for(int j = 0 ; j<hotels.get(i).getRoomTypes().size() ; j++) {
-				System.out.println(hotels.get(i).getRoomTypes());
-			}    	    	  
+		return hotels;
+	}
+	
+	public void showHotelNames(ArrayList<Hotel> h){
+		String names = "Names: ";
+		String stars = "Stars: ";
+		for(int i = 0 ; i < h.size() ; i++ ){
+			names = names + h.get(i).getName() + ", ";
+			stars += String.valueOf(h.get(i).getStars()) + ", ";
 		}
-		
+		txtpnStars.setText(stars);
+		txtpnResults.setText(names);
 	}
 
 	/**
@@ -59,10 +69,17 @@ public class Interface {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("oyoyo");
-				Test();
+				ArrayList<Hotel> hotels = Test();
+				showHotelNames(hotels);
 			}
 		});
-		frame.getContentPane().add(btnHandlerequest, BorderLayout.CENTER);
+		frame.getContentPane().add(btnHandlerequest, BorderLayout.NORTH);
+		txtpnStars.setText("Stars:");
+		
+		frame.getContentPane().add(txtpnStars, BorderLayout.CENTER);
+		
+		txtpnResults.setText("Results:");
+		frame.getContentPane().add(txtpnResults, BorderLayout.WEST);
 	}
 	
 	public void showResults(Hotel[] results){

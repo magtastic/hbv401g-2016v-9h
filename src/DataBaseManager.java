@@ -38,6 +38,7 @@ public class DatabaseManager {
 	    	hotels.get(i).setHotelID(rs1.getInt("id"));
 	    	hotels.get(i).setHotelInfo(rs1.getString("info"));
 	    	hotels.get(i).setName(rs1.getString("name"));
+	    	hotels.get(i).setStars((double)rs1.getInt("stars"));
 	    	
 	    	PreparedStatement result2 = connection.prepareStatement(""
 	    			+ "SELECT typeOfRooms.id,typeOfRooms.numGuest,typeOfRooms.kingBed,typeOfRooms.singleBed "
