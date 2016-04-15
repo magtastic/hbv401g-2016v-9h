@@ -9,13 +9,9 @@ public class Room {
 	private ArrayList<Date[]> date;
 	private int roomID;
 
-	public Room( Boolean breakfast, Boolean disabledFriendly, Boolean smoking,
-							 Double price, ArrayList<Date[]> date) {
-		this.breakfast = breakfast;
-		this.disabledFriendly = disabledFriendly;
-		this.smoking = smoking;
+	public Room( int id, double price) {
+		this.roomID = id;
 		this.price = price;
-		this.date = date;
 	}
 
 	public boolean isBreakfast() {
@@ -61,6 +57,9 @@ public class Room {
 	
 	public int getRoomID() {
 		return roomID;
+	}
+	public void setRoomID(int id) {
+		this.roomID = id;
 	}
 	
 

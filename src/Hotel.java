@@ -18,6 +18,7 @@ public class Hotel {
 	private Boolean bikeRent;
 	private Boolean airportShuttle;
 	private Boolean disabledFriendly;
+	private String info;
 	private int hotelID;
 
 	public Hotel(String location) {
@@ -162,6 +163,15 @@ public class Hotel {
 	
 	public int getHotelID(){
 		return hotelID;
+	}
+	public void setHotelID(int id) {
+		this.hotelID = id;
+	}
+	public String getHotelInfo(){
+		return info;
+	}
+	public void setHotelInfo(String info) {
+		this.info = info;
 	}
 
 }
