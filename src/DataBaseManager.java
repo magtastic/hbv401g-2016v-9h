@@ -36,7 +36,8 @@ public class DatabaseManager {
 	        // read the result set	    	
 	    	hotels.add(new Hotel(location));
 	    	hotels.get(i).setHotelID(rs1.getInt("id"));
-	    	hotels.get(i).setHotelInfo(rs1.getString("info"));	   
+	    	hotels.get(i).setHotelInfo(rs1.getString("info"));
+	    	hotels.get(i).setName(rs1.getString("name"));
 	    	
 	    	PreparedStatement result2 = connection.prepareStatement(""
 	    			+ "SELECT typeOfRooms.id,typeOfRooms.numGuest,typeOfRooms.kingBed,typeOfRooms.singleBed "
@@ -174,7 +175,7 @@ public class DatabaseManager {
 		      result.setInt(4, 900);
 		      result.setInt(5, currBook);
 		      
-		      // þarf ég að gera þetta? Er ekki viss
+		      // tharf ad gera thetta? Er ekki viss
 		      ResultSet rs1 = result.executeQuery();
 		    }
 		    catch(SQLException e)

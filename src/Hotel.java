@@ -2,6 +2,7 @@ import java.util.ArrayList;
 public class Hotel {
 
 	private String location;
+	private String name;
 	private Long roomsCount;
 	private Long roomsAvailable;
 	private Double[] priceRange;
@@ -29,6 +30,14 @@ public class Hotel {
 		return location;
 	}
 
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public void setLocation(String location) {
 		this.location = location;
 	}
