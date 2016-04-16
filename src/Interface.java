@@ -12,8 +12,10 @@ import javax.swing.JTextPane;
 public class Interface {
 
 	private JFrame frame;
-	private JTextPane txtpnResults = new JTextPane();
-	private final JTextPane txtpnStars = new JTextPane();
+	JTextPane textPane = new JTextPane();
+	JTextPane textPane_1 = new JTextPane();
+	JTextPane textPane_2 = new JTextPane();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -32,23 +34,61 @@ public class Interface {
 	}
 	
 	public ArrayList<Hotel> Test(){
-		Date dateIn = new Date(29,3,16);
-		Date dateOut = new Date(1,5,16);
-		ArrayList<Hotel> hotels = new Director().handleRequest(dateIn,dateOut,"Reykjavik",200);
+		Date dateIn = new Date(29,1,16);
+		Date dateOut = new Date(30,1,16);
+		ArrayList<Hotel> hotels = new Director().handleRequest(dateIn,dateOut,"Reykjavik",5);
+		System.out.println(hotels);
 		return hotels;
 	}
 	
-	public void showHotelNames(ArrayList<Hotel> h){
-		String names = "Names: ";
-		String stars = "Stars: ";
-		for(int i = 0 ; i < h.size() ; i++ ){
-			names = names + h.get(i).getName() + ", ";
-			stars += String.valueOf(h.get(i).getStars()) + ", ";
+	public void showHotelNames(Hotel h, int i){
+		System.out.println(i);
+		String hotelName = "";
+	    ArrayList<TypeOfRoom> t = h.getRoomTypes();
+    	JTextPane[] typePane = new JTextPane[t.size()];
+		switch(i){
+			case 0:
+				hotelName = h.getName();
+				textPane.setBounds(38,68,100,16);
+			    textPane.setText(hotelName);
+			    
+			    for(int k = 0; k<t.size(); k++){
+			    	typePane[k] = new JTextPane();
+			    	typePane[k].setBounds(38,68+(32*(k+1)),100,16);
+			    	frame.getContentPane().add(typePane[k]);
+			    	String tmpText = t.get(k).getPeople() + "";
+			    	typePane[k].setText(tmpText);
+			    }
+			    break;
+			case 1:
+				hotelName = h.getName();
+				textPane_1.setBounds(204,68,100,16);
+				textPane_1.setText(hotelName);
+				
+				for(int k = 0; k<t.size(); k++){
+			    	typePane[k] = new JTextPane();
+			    	typePane[k].setBounds(38,68+(32*(k+1)),100,16);
+			    	frame.getContentPane().add(typePane[k]);
+			    	String tmpText = t.get(k).getPeople() + "";
+			    	typePane[k].setText(tmpText);
+			    }
+			    break;
+			case 2:
+				hotelName = h.getName();
+				textPane_2.setBounds(363,68,100,16);
+				textPane_2.setText(hotelName);
+				
+				for(int k = 0; k<t.size(); k++){
+			    	typePane[k] = new JTextPane();
+			    	typePane[k].setBounds(38,68+(32*(k+1)),100,16);
+			    	frame.getContentPane().add(typePane[k]);
+			    	String tmpText = t.get(k).getPeople() + "";
+			    	typePane[k].setText(tmpText);
+			    }
+			    break;
 		}
-		txtpnStars.setText(stars);
-		txtpnResults.setText(names);
 	}
-
+	
 	/**
 	 * Create the application.
 	 */
@@ -63,27 +103,32 @@ public class Interface {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		JButton btnHandlerequest = new JButton("handleRequest");
 		btnHandlerequest.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("oyoyo");
-				ArrayList<Hotel> hotels = Test();
-				showHotelNames(hotels);
+				ArrayList<Hotel> h = Test();
+				for(int i = 0; i < h.size(); i++){
+					showHotelNames(h.get(i),i);	
+				}
 			}
 		});
-		frame.getContentPane().add(btnHandlerequest, BorderLayout.NORTH);
-		txtpnStars.setText("Stars:");
+		btnHandlerequest.setBounds(158, 19, 117, 29);
+		frame.getContentPane().add(btnHandlerequest);
 		
-		frame.getContentPane().add(txtpnStars, BorderLayout.CENTER);
+		textPane.setBounds(38, 84, 1, 16);
+		frame.getContentPane().add(textPane);
 		
-		txtpnResults.setText("Results:");
-		frame.getContentPane().add(txtpnResults, BorderLayout.WEST);
+		textPane_1.setBounds(204, 84, 1, 16);
+		frame.getContentPane().add(textPane_1);
+		
+		textPane_2.setBounds(363, 84, 1, 16);
+		frame.getContentPane().add(textPane_2);
 	}
 	
 	public void showResults(Hotel[] results){
 		return;
 	}
-
 }

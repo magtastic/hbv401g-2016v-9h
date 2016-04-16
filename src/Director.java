@@ -25,12 +25,15 @@ public class Director {
 	
 	public ArrayList<Hotel> cleanUpHotels(ArrayList<Hotel> h){
 		
-		for(int i = 0; i<h.size(); i++){
+		for(int i = h.size()-1; i>=0; i--){
 			ArrayList<TypeOfRoom> t = h.get(i).getRoomTypes();
 			for(int j = t.size()-1; j >= 0; j--){
 				if(t.get(j) == null){
 					t.remove(j);
 				}
+			}
+			if(t.size()==0){
+				h.remove(i);
 			}
 		}
 		
