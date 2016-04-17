@@ -1,11 +1,11 @@
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Director {
 
 	private DatabaseManager db = new DatabaseManager();
-	private Interface UI = new Interface();
-	private int currentBookingNum = 744;
+	private int currentBookingNum = db.getHighestBookingID();
+	
+	
 	
 	public void bookRoom(Hotel h , TypeOfRoom t, Date dateIn, Date dateOut) {
 				
